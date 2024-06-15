@@ -5,17 +5,19 @@ services:
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.http.routers.bitwarden.rule=Host(`bitwarden.localhost`)
+      - traefik.http.routers.bitwarden.rule=Host(`${ENV_DOMAIN}`)
       - traefik.http.routers.bitwarden.entrypoints=HTTPS
       - traefik.http.routers.bitwarden.tls=true
       - traefik.http.routers.bitwarden.tls.certresolver=letsencrypt
     environment:
-      - SMTP_HOST=smtp.localhost
-      - SMTP_FROM=no-reply@localhost
-      - SMTP_PORT=587
-      - SMTP_SECURITY=starttls
-      - SMTP_USERNAME=username
-      - SMTP_PASSWORD=password
+      - DOMAIN=${ENV_DOMAIN}
+      - ADMIN_TOKEN=${ENV_ADMIN_TOKEN}
+      - SMTP_HOST=${ENV_SMTP_HOST}
+      - SMTP_FROM=${ENV_SMTP_FROM}
+      - SMTP_PORT=${ENV_SMTP_PORT}
+      - SMTP_SECURITY=${SMTP_SECURITY}
+      - SMTP_USERNAME=${ENV_SMTP_USERNAME}
+      - SMTP_PASSWORD==${ENV_SMTP_PASSWORD}
     networks:
       - traefik_lan
     volumes:
