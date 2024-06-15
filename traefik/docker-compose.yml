@@ -3,6 +3,8 @@ services:
     image: traefik:latest
     container_name: traefik
     restart: always
+    command:
+      - --certificatesresolvers.myresolver.acme.email=${ENV_ACME_EMAIL}
     labels:
       - traefik.enable=true
       - traefik.http.routers.dashboard.rule=Host(`${ENV_DOMAIN}`)

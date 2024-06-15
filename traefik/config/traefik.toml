@@ -21,7 +21,7 @@
       scheme = "https"
 
 [certificatesResolvers.letsencrypt.acme]
-  email = "${ENV_ACME_EMAIL}"
+  email = "letsencrypt@system.localhost"
   storage = "acme.json"
   [certificatesResolvers.letsencrypt.acme.tlsChallenge]
 
