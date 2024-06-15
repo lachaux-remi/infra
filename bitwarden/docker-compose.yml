@@ -19,6 +19,7 @@ services:
       - SMTP_SECURITY=${SMTP_SECURITY}
       - SMTP_USERNAME=${ENV_SMTP_USERNAME}
       - SMTP_PASSWORD==${ENV_SMTP_PASSWORD}
+      - SMTP_AUTH_MECHANISM=${ENV_SMTP_AUTH_MECHANISM}
     networks:
       - traefik_lan
     volumes:
