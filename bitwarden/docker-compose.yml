@@ -1,0 +1,19 @@
+services:
+  bitwarden:
+    image: vaultwarden/server:latest
+    container_name: bitwarden
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.bitwarden.rule=Host(`bitwarden.localhost`)
+      - traefik.http.routers.bitwarden.entrypoints=HTTP,HTTPS
+      # - traefik.http.routers.bitwarden.tls=true
+      # - traefik.http.routers.bitwarden.tls.certresolver=letsencrypt
+    networks:
+      - traefik_lan
+    volumes:
+      - ./data:/data
+
+networks:
+  traefik_lan:
+    external: true

@@ -1,0 +1,37 @@
+[api]
+  dashboard = true
+
+[providers]
+  [providers.docker]
+    exposedByDefault = false
+
+  [providers.file]
+    directory = "/etc/traefik/dynamic-conf"
+    watch = true
+
+[entryPoints]
+  [entryPoints.HTTPS]
+    address = ":443"
+
+  [entryPoints.HTTP]
+    address = ":80"
+    # Force HTTPS redirection for all requests to the HTTP entrypoint
+    # [entryPoints.HTTP.http.redirections.entryPoint]
+    #   to = "HTTPS"
+    #   scheme = "https"
+
+[certificatesResolvers.letsencrypt.acme]
+  email = "letsencrypt@system.localhost"
+  storage = "acme.json"
+  [certificatesResolvers.letsencrypt.acme.tlsChallenge]
+
+[accessLog]
+  format = "json"
+  [accessLog.fields]
+    defaultMode = "drop"
+    [accessLog.fields.names]
+      "ClientAddr" = "keep"
+      "RequestAddr" = "keep"
+      "RequestMethod" = "keep"
+      "RequestPath" = "keep"
+      "DownstreamStatus" = "keep"

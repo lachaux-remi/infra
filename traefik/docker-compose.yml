@@ -1,0 +1,27 @@
+services:
+  traefik:
+    image: traefik:latest
+    container_name: traefik
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dashboard.rule=Host(`traefik.localhost`)
+      - traefik.http.routers.dashboard.service=api@internal
+      - traefik.http.routers.dashboard.entrypoints=HTTP,HTTPS
+      - traefik.http.routers.dashboard.middlewares=auth-dashboard
+      - traefik.http.middlewares.auth-dashboard.basicauth.users=admin:$$apr1$$yfWNnkeM$$0t2Iu9kgMbSKvFS1vGmx90
+      # - traefik.http.routers.dashboard.tls=true
+      # - traefik.http.routers.dashboard.tls.certresolver=letsencrypt
+    networks:
+      - traefik_lan
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./config:/etc/traefik:ro
+      - ./config/acme.json:/acme.json
+
+networks:
+  traefik_lan:
+    external: true
