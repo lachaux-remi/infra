@@ -10,7 +10,7 @@ services:
       - traefik.http.routers.bitwarden.tls=true
       - traefik.http.routers.bitwarden.tls.certresolver=letsencrypt
     environment:
-      - DOMAIN=${ENV_DOMAIN}
+      - DOMAIN=https://${ENV_DOMAIN}
       - ADMIN_TOKEN=${ENV_ADMIN_TOKEN}
       - SMTP_HOST=${ENV_SMTP_HOST}
       - SMTP_FROM=${ENV_SMTP_FROM}
