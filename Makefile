@@ -3,12 +3,6 @@
 help: ## Display this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-DOMAIN = localhost
-.PHONY: config-update
-config-update: ## Update configuration for all services with DOMAIN variable (e.g. make config-update DOMAIN=example.com)
-	@echo "Updating configuration for all services..."
-	@sed -i -- 's/localhost/${DOMAIN}/g' **/*.* */**/*.*
-
 .PHONY: traefik-start
 traefik-start: ## Start Traefik
 	@echo "Starting Traefik..."

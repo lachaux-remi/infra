@@ -16,9 +16,9 @@
   [entryPoints.HTTP]
     address = ":80"
     # Force HTTPS redirection for all requests to the HTTP entrypoint
-    # [entryPoints.HTTP.http.redirections.entryPoint]
-    #   to = "HTTPS"
-    #   scheme = "https"
+    [entryPoints.HTTP.http.redirections.entryPoint]
+      to = "HTTPS"
+      scheme = "https"
 
 [certificatesResolvers.letsencrypt.acme]
   email = "letsencrypt@system.localhost"

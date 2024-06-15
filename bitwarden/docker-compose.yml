@@ -6,9 +6,16 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.bitwarden.rule=Host(`bitwarden.localhost`)
-      - traefik.http.routers.bitwarden.entrypoints=HTTP,HTTPS
-      # - traefik.http.routers.bitwarden.tls=true
-      # - traefik.http.routers.bitwarden.tls.certresolver=letsencrypt
+      - traefik.http.routers.bitwarden.entrypoints=HTTPS
+      - traefik.http.routers.bitwarden.tls=true
+      - traefik.http.routers.bitwarden.tls.certresolver=letsencrypt
+    environment:
+      - SMTP_HOST=smtp.localhost
+      - SMTP_FROM=no-reply@localhost
+      - SMTP_PORT=587
+      - SMTP_SECURITY=starttls
+      - SMTP_USERNAME=username
+      - SMTP_PASSWORD=password
     networks:
       - traefik_lan
     volumes:
