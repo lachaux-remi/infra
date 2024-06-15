@@ -22,6 +22,10 @@ traefik-stop: ## Stop Traefik
 .PHONY: traefik-restart
 traefik-restart: traefik-stop traefik-start ## Restart Traefik
 
+.PHONY: traefik-chmod
+traefik-chmod: ## Set permissions for acme.json file
+	@docker exec traefik chmod 600 /acme.json
+
 .PHONY: portainer-start
 portainer-start: ## Start Portainer
 	@echo "Starting Portainer..."
@@ -38,12 +42,12 @@ portainer-restart: portainer-stop portainer-start ## Restart Portainer
 .PHONY: bitwarden-start
 bitwarden-start: ## Start Bitwarden
 	@echo "Building Bitwarden..."
-	@docker-compose -f docker-compose.yml up -d
+	@docker-compose -f bitwarden/docker-compose.yml up -d
 
 .PHONY: bitwarden-stop
 bitwarden-stop: ## Stop Bitwarden
 	@echo "Stopping Bitwarden..."
-	@docker-compose -f docker-compose.yml down
+	@docker-compose -f bitwarden/docker-compose.yml down
 
 .PHONY: bitwarden-restart
 bitwarden-restart: bitwarden-stop bitwarden-start ## Restart Bitwarden
