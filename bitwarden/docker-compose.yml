@@ -12,6 +12,7 @@ services:
     environment:
       - DOMAIN=https://${ENV_DOMAIN}
       - ADMIN_TOKEN=${ENV_ADMIN_TOKEN}
+      - TRASH_AUTO_DELETE_DAYS=7
       - SIGNUPS_ALLOWED=false
       - SMTP_HOST=${ENV_SMTP_HOST}
       - SMTP_FROM=${ENV_SMTP_FROM}
