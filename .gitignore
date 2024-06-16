@@ -4,3 +4,4 @@
 /bitwarden/data/*
 /fail2ban/data/db
 /portainer/data/*
+/traefik/config/acme.json
