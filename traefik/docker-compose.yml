@@ -4,15 +4,17 @@ services:
     container_name: traefik
     restart: always
     command:
+      - --entryPoints.HTTP.http.redirections.entryPoint.to=HTTPS
+      - --entryPoints.HTTP.http.redirections.entryPoint.scheme=https
       - --certificatesresolvers.myresolver.acme.email=${ENV_ACME_EMAIL}
     labels:
       - traefik.enable=true
       - traefik.http.routers.dashboard.rule=Host(`${ENV_DOMAIN}`)
       - traefik.http.routers.dashboard.service=api@internal
-      - traefik.http.routers.dashboard.entrypoints=HTTPS
-      - traefik.http.routers.dashboard.middlewares=auth-dashboard
-      - traefik.http.middlewares.auth-dashboard.basicauth.users=${ENV_BASIC_AUTH}
-      - traefik.http.routers.dashboard.tls=true
+      - traefik.http.routers.dashboard.entrypoints=${ENV_ENTRYPOINTS}
+      - traefik.http.routers.dashboard.middlewares=traefik-auth
+      - traefik.http.middlewares.traefik-auth.basicauth.users=${ENV_BASIC_AUTH}
+      - traefik.http.routers.dashboard.tls=${ENV_TLS}
       - traefik.http.routers.dashboard.tls.certresolver=letsencrypt
     networks:
       - traefik_lan
@@ -23,6 +25,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config:/etc/traefik:ro
       - ./config/acme.json:/acme.json
+      - ./../logs:/logs
 
 networks:
   traefik_lan:

@@ -15,22 +15,15 @@
 
   [entryPoints.HTTP]
     address = ":80"
-    # Force HTTPS redirection for all requests to the HTTP entrypoint
-    [entryPoints.HTTP.http.redirections.entryPoint]
-      to = "HTTPS"
-      scheme = "https"
 
 [certificatesResolvers.letsencrypt.acme]
   storage = "acme.json"
   [certificatesResolvers.letsencrypt.acme.tlsChallenge]
 
+[log]
+  filePath = "/logs/traefik.log"
+  level = "INFO"
+
 [accessLog]
-  format = "json"
-  [accessLog.fields]
-    defaultMode = "drop"
-    [accessLog.fields.names]
-      "ClientAddr" = "keep"
-      "RequestAddr" = "keep"
-      "RequestMethod" = "keep"
-      "RequestPath" = "keep"
-      "DownstreamStatus" = "keep"
+  addInternals = true
+  filePath = "/logs/traefik-access.log"

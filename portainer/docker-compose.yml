@@ -7,8 +7,8 @@ services:
       - traefik.enable=true
       - traefik.http.services.portainer.loadbalancer.server.port=9000
       - traefik.http.routers.portainer.rule=Host(`${ENV_DOMAIN}`)
-      - traefik.http.routers.portainer.entrypoints=HTTPS
-      - traefik.http.routers.portainer.tls=true
+      - traefik.http.routers.portainer.entrypoints=${ENV_ENTRYPOINTS}
+      - traefik.http.routers.portainer.tls=${ENV_TLS}
       - traefik.http.routers.portainer.tls.certresolver=letsencrypt
     networks:
       - traefik_lan

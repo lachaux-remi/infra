@@ -6,25 +6,27 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.bitwarden.rule=Host(`${ENV_DOMAIN}`)
-      - traefik.http.routers.bitwarden.entrypoints=HTTPS
-      - traefik.http.routers.bitwarden.tls=true
+      - traefik.http.routers.bitwarden.entrypoints=${ENV_ENTRYPOINTS}
+      - traefik.http.routers.bitwarden.tls=${ENV_TLS}
       - traefik.http.routers.bitwarden.tls.certresolver=letsencrypt
     environment:
-      - DOMAIN=https://${ENV_DOMAIN}
+      - DOMAIN=${ENV_PROTOCOL}://${ENV_DOMAIN}
       - ADMIN_TOKEN=${ENV_ADMIN_TOKEN}
       - TRASH_AUTO_DELETE_DAYS=7
       - SIGNUPS_ALLOWED=false
       - SMTP_HOST=${ENV_SMTP_HOST}
       - SMTP_FROM=${ENV_SMTP_FROM}
       - SMTP_PORT=${ENV_SMTP_PORT}
-      - SMTP_SECURITY=${SMTP_SECURITY}
+      - SMTP_SECURITY=${ENV_SMTP_SECURITY}
       - SMTP_USERNAME=${ENV_SMTP_USERNAME}
-      - SMTP_PASSWORD==${ENV_SMTP_PASSWORD}
+      - SMTP_PASSWORD=${ENV_SMTP_PASSWORD}
       - SMTP_AUTH_MECHANISM=${ENV_SMTP_AUTH_MECHANISM}
+      - LOG_FILE=/logs/bitwarden.log
     networks:
       - traefik_lan
     volumes:
       - ./data:/data
+      - ./../logs:/logs
 
 networks:
   traefik_lan:

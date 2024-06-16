@@ -1,3 +1,6 @@
-*/data/*
-!*/data/.gitkeep
 .env
+*.log
+
+/bitwarden/data/*
+/fail2ban/data/db
+/portainer/data/*
