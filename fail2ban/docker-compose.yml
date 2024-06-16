@@ -10,10 +10,6 @@ services:
     environment:
       - F2B_DB_PURGE_AGE=30d
       - F2B_LOG_TARGET=/logs/fail2ban.log
-      - SSMTP_HOST=${ENV_SSMTP_HOST}
-      - SSMTP_PORT=${ENV_SSMTP_PORT}
-      - SSMTP_USER=${ENV_SSMTP_USER}
-      - SSMTP_PASSWORD=${ENV_SSMTP_PASSWORD}
     network_mode: "host"
     volumes:
       - ./data:/data
