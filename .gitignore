@@ -3,5 +3,6 @@
 
 /bitwarden/data/*
 /fail2ban/data/db
+/mariadb/data/*
 /portainer/data/*
 /traefik/config/acme.json

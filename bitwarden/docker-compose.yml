@@ -24,10 +24,13 @@ services:
       - LOG_FILE=/logs/bitwarden.log
     networks:
       - traefik_lan
+      - mysql_lan
     volumes:
       - ./data:/data
       - ./../logs:/logs
 
 networks:
   traefik_lan:
+    external: true
+  mysql_lan:
     external: true
