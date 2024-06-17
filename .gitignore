@@ -6,3 +6,4 @@
 /mariadb/data/*
 /portainer/data/*
 /traefik/config/acme.json
+/wireguard/data/*
