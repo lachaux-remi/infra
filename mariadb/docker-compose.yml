@@ -3,6 +3,11 @@ services:
     image: mariadb:latest
     container_name: mariadb
     restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.tcp.services.mariadb.loadbalancer.server.port=3306
+      - traefik.tcp.routers.mariadb.rule=HostSNI(`*`)
+      - traefik.tcp.routers.mariadb.entrypoints=MYSQL
     environment:
       MARIADB_ROOT_PASSWORD: ${ENV_MARIADB_ROOT_PASSWORD}
     networks:
