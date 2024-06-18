@@ -11,12 +11,12 @@ services:
     environment:
       MARIADB_ROOT_PASSWORD: ${ENV_MARIADB_ROOT_PASSWORD}
     networks:
-      - mysql_lan
+      - traefik_lan
     ports:
       - 3306:3306
     volumes:
       - ./data:/var/lib/mysql
 
 networks:
-  mysql_lan:
+  traefik_lan:
     external: true
