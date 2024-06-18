@@ -16,9 +16,6 @@
   [entryPoints.HTTP]
     address = ":80"
 
-  [entryPoints.VPN]
-    address = ":51820/udp"
-
 [certificatesResolvers.letsencrypt.acme]
   storage = "acme.json"
   [certificatesResolvers.letsencrypt.acme.tlsChallenge]
