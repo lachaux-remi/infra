@@ -12,8 +12,6 @@ services:
       MARIADB_ROOT_PASSWORD: ${ENV_MARIADB_ROOT_PASSWORD}
     networks:
       - traefik_lan
-    ports:
-      - 3306:3306
     volumes:
       - ./data:/var/lib/mysql
 
