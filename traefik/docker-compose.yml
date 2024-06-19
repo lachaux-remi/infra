@@ -21,7 +21,7 @@ services:
     ports:
       - 80:80
       - 443:443
-      - 51820:51820/udp
+      - 3306:3306
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config:/etc/traefik:ro
