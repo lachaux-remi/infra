@@ -1,0 +1,7 @@
+[Definition]
+
+# Regexp to catch failed login attempts with status 422
+failregex = ^<HOST> - - \[.*\] "POST /api/auth HTTP/1.1" 422 \d+ ".*" ".*" \d+ "portainer@docker" ".*
+
+# Ignore successful login attempts
+ignoreregex =

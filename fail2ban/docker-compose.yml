@@ -9,8 +9,9 @@ services:
       - NET_RAW
     environment:
       - F2B_DB_PURGE_AGE=30d
-      - F2B_LOG_TARGET=/logs/fail2ban.log
+      - F2B_LOG_TARGET=/logs/fail2ban/fail2ban.log
     network_mode: "host"
     volumes:
-      - ./data:/data
-      - ./../logs:/logs
+      - ./config:/data
+      - ./../logs/fail2ban:/logs/fail2ban
+      - ./../logs:/logs:ro

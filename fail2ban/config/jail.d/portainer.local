@@ -1,0 +1,7 @@
+[portainer-auth]
+enabled = true
+chain = DOCKER-USER
+port = http,https
+filter = portainer-auth
+mode = aggressive
+logpath = /logs/traefik/traefik.log

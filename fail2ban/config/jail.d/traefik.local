@@ -4,7 +4,7 @@ chain = DOCKER-USER
 port = http,https
 filter = traefik-auth
 mode = aggressive
-logpath = /logs/traefik-access.log
+logpath = /logs/traefik/traefik.log
 
 [traefik-auth-ddos]
 filter = traefik-auth[mode=ddos]
@@ -15,4 +15,4 @@ chain = DOCKER-USER
 port = http,https
 filter = traefik-botsearch
 mode = aggressive
-logpath = /logs/traefik-access.log
+logpath = /logs/traefik/traefik.log

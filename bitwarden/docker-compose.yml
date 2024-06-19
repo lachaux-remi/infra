@@ -26,7 +26,7 @@ services:
       - traefik_lan
     volumes:
       - ./data:/data
-      - ./../logs:/logs
+      - ./../logs/bitwarden:/logs/
 
 networks:
   traefik_lan:

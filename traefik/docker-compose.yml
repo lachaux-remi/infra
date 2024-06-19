@@ -26,7 +26,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config:/etc/traefik:ro
       - ./config/acme.json:/acme.json
-      - ./../logs:/logs
+      - ./../logs/traefik:/logs
 
 networks:
   traefik_lan:

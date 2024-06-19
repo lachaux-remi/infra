@@ -2,7 +2,7 @@
 *.log
 
 /bitwarden/data/*
-/fail2ban/data/db
+/fail2ban/config/db
 /mariadb/data/*
 /portainer/data/*
 /traefik/config/acme.json

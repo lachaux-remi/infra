@@ -23,10 +23,17 @@
   storage = "acme.json"
   [certificatesResolvers.letsencrypt.acme.tlsChallenge]
 
-[log]
-  filePath = "/logs/traefik.log"
-  level = "INFO"
-
 [accessLog]
   addInternals = true
-  filePath = "/logs/traefik-access.log"
+  filePath = "/logs/traefik.log"
+  [accessLog.fields]
+    defaultMode = "keep"
+    [accessLog.fields.names]
+      "ClientUsername" = "drop"
+    [accessLog.fields.headers]
+      defaultMode = "keep"
+      [accessLog.fields.headers.names]
+        "User-Agent" = "keep"
+        "Authorization" = "drop"
+        "Content-Type" = "keep"
+        "OriginStatusLine" = "keep"
