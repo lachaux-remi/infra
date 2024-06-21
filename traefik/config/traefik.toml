@@ -19,6 +19,9 @@
   [entryPoints.MYSQL]
     address = ":3306"
 
+  [entryPoints.MC]
+    address = ":25565"
+
 [certificatesResolvers.letsencrypt.acme]
   storage = "acme.json"
   [certificatesResolvers.letsencrypt.acme.tlsChallenge]
