@@ -1,0 +1,3 @@
+[Definition]
+failregex = ^<HOST> - \S+ \[.*\] "\S+ \/.* \S+" 401 \d+ "\S+" "\S+" \d+ "dashboard@docker" "\S+" \d+ms
+ignoreregex =

@@ -6,9 +6,6 @@ filter = traefik-auth
 mode = aggressive
 logpath = /logs/traefik/traefik.log
 
-[traefik-auth-ddos]
-filter = traefik-auth[mode=ddos]
-
 [traefik-botsearch]
 enabled = true
 chain = DOCKER-USER
