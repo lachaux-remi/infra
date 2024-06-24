@@ -21,6 +21,7 @@ services:
       - SMTP_USERNAME=${ENV_SMTP_USERNAME}
       - SMTP_PASSWORD=${ENV_SMTP_PASSWORD}
       - SMTP_AUTH_MECHANISM=${ENV_SMTP_AUTH_MECHANISM}
+      - DATABASE_URL=mysql://${ENV_DATABASE_USER}:${ENV_DATABASE_PASSWORD}@mariadb/${ENV_DATABASE_DB}
       - LOG_FILE=/logs/bitwarden.log
     networks:
       - traefik_lan
