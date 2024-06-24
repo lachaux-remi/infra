@@ -17,6 +17,8 @@ services:
       - PMA_PASSWORD=${ENV_PMA_PASSWORD}
     networks:
       - traefik_lan
+    volumes:
+      - ./config/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
 
 networks:
   traefik_lan:
