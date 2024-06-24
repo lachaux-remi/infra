@@ -1,0 +1,23 @@
+services:
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.phpmyadmin.rule=Host(`${ENV_DOMAIN}`)
+      - traefik.http.routers.phpmyadmin.entrypoints=${ENV_ENTRYPOINTS}
+      - traefik.http.routers.phpmyadmin.middlewares=phpmyadmin-auth
+      - traefik.http.middlewares.phpmyadmin-auth.basicauth.users=${ENV_BASIC_AUTH}
+      - traefik.http.routers.phpmyadmin.tls=${ENV_TLS}
+      - traefik.http.routers.phpmyadmin.tls.certresolver=letsencrypt
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_USER=${ENV_PMA_USER}
+      - PMA_PASSWORD=${ENV_PMA_PASSWORD}
+    networks:
+      - traefik_lan
+
+networks:
+  traefik_lan:
+    external: true
