@@ -12,4 +12,4 @@ chain = DOCKER-USER
 port = http,https
 filter = bitwarden-admin
 mode = aggressive
-logpath = /logs/bitwarden.log
+logpath = /logs/bitwarden/bitwarden.log
