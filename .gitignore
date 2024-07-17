@@ -1,9 +1,9 @@
 .env
 *.log
 
-/bitwarden/data/*
 /fail2ban/config/db
 /mariadb/data/*
 /portainer/data/*
 /traefik/config/acme.json
 /wireguard/data/*
+/vaultwarden/data/*

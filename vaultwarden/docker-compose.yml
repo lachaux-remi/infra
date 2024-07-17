@@ -1,14 +1,14 @@
 services:
-  bitwarden:
+  vaultwarden:
     image: vaultwarden/server:latest
-    container_name: bitwarden
+    container_name: vaultwarden
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.http.routers.bitwarden.rule=Host(`${ENV_DOMAIN}`)
-      - traefik.http.routers.bitwarden.entrypoints=${ENV_ENTRYPOINTS}
-      - traefik.http.routers.bitwarden.tls=${ENV_TLS}
-      - traefik.http.routers.bitwarden.tls.certresolver=letsencrypt
+      - traefik.http.routers.vaultwarden.rule=Host(`${ENV_DOMAIN}`)
+      - traefik.http.routers.vaultwarden.entrypoints=${ENV_ENTRYPOINTS}
+      - traefik.http.routers.vaultwarden.tls=${ENV_TLS}
+      - traefik.http.routers.vaultwarden.tls.certresolver=letsencrypt
     environment:
       - DOMAIN=${ENV_PROTOCOL}://${ENV_DOMAIN}
       - ADMIN_TOKEN=${ENV_ADMIN_TOKEN}
@@ -22,12 +22,12 @@ services:
       - SMTP_PASSWORD=${ENV_SMTP_PASSWORD}
       - SMTP_AUTH_MECHANISM=${ENV_SMTP_AUTH_MECHANISM}
       - DATABASE_URL=mysql://${ENV_DATABASE_USER}:${ENV_DATABASE_PASSWORD}@mariadb/${ENV_DATABASE_DB}
-      - LOG_FILE=/logs/bitwarden.log
+      - LOG_FILE=/logs/vaultwarden.log
     networks:
       - traefik_lan
     volumes:
       - ./data:/data
-      - ./../logs/bitwarden:/logs/
+      - ./../logs/vaultwarden:/logs/
 
 networks:
   traefik_lan:

@@ -1,0 +1,15 @@
+[vaultwarden]
+enabled = true
+chain = DOCKER-USER
+port = http,https
+filter = vaultwarden
+mode = aggressive
+logpath = /logs/vaultwarden/vaultwarden.log
+
+[vaultwarden-admin]
+enabled = true
+chain = DOCKER-USER
+port = http,https
+filter = vaultwarden-admin
+mode = aggressive
+logpath = /logs/vaultwarden/vaultwarden.log
