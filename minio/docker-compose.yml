@@ -16,8 +16,6 @@ services:
       - traefik.http.routers.minio-ui.service=minio-ui
       - traefik.http.routers.minio-ui.rule=Host(`ui.${ENV_DOMAIN}`)
       - traefik.http.routers.minio-ui.entrypoints=${ENV_ENTRYPOINTS}
-      - traefik.http.routers.minio-ui.middlewares=minio-auth
-      - traefik.http.middlewares.minio-auth.basicauth.users=${ENV_BASIC_AUTH}
       - traefik.http.routers.minio-ui.tls=${ENV_TLS}
       - traefik.http.routers.minio-ui.tls.certresolver=letsencrypt
     environment:
