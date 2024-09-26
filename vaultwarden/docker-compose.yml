@@ -10,19 +10,19 @@ services:
       - traefik.http.routers.vaultwarden.tls=${ENV_TLS}
       - traefik.http.routers.vaultwarden.tls.certresolver=letsencrypt
     environment:
-      - DOMAIN=${ENV_PROTOCOL}://${ENV_DOMAIN}
-      - ADMIN_TOKEN=${ENV_ADMIN_TOKEN}
-      - TRASH_AUTO_DELETE_DAYS=7
-      - SIGNUPS_ALLOWED=false
-      - SMTP_HOST=${ENV_SMTP_HOST}
-      - SMTP_FROM=${ENV_SMTP_FROM}
-      - SMTP_PORT=${ENV_SMTP_PORT}
-      - SMTP_SECURITY=${ENV_SMTP_SECURITY}
-      - SMTP_USERNAME=${ENV_SMTP_USERNAME}
-      - SMTP_PASSWORD=${ENV_SMTP_PASSWORD}
-      - SMTP_AUTH_MECHANISM=${ENV_SMTP_AUTH_MECHANISM}
-      - DATABASE_URL=mysql://${ENV_DATABASE_USER}:${ENV_DATABASE_PASSWORD}@mariadb/${ENV_DATABASE_DB}
-      - LOG_FILE=/logs/vaultwarden.log
+      DOMAIN: ${ENV_PROTOCOL}://${ENV_DOMAIN}
+      ADMIN_TOKEN: ${ENV_ADMIN_TOKEN}
+      TRASH_AUTO_DELETE_DAYS: 7
+      SIGNUPS_ALLOWED: false
+      SMTP_HOST: ${ENV_SMTP_HOST}
+      SMTP_FROM: ${ENV_SMTP_FROM}
+      SMTP_PORT: ${ENV_SMTP_PORT}
+      SMTP_SECURITY: ${ENV_SMTP_SECURITY}
+      SMTP_USERNAME: ${ENV_SMTP_USERNAME}
+      SMTP_PASSWORD: ${ENV_SMTP_PASSWORD}
+      SMTP_AUTH_MECHANISM: ${ENV_SMTP_AUTH_MECHANISM}
+      DATABASE_URL: mysql://${ENV_DATABASE_USER}:${ENV_DATABASE_PASSWORD}@mariadb/${ENV_DATABASE_DB}
+      LOG_FILE: /logs/vaultwarden.log
     networks:
       - traefik_lan
     volumes:

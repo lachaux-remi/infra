@@ -19,8 +19,8 @@ services:
       - traefik.http.routers.minio-ui.tls=${ENV_TLS}
       - traefik.http.routers.minio-ui.tls.certresolver=letsencrypt
     environment:
-      - MINIO_ROOT_USER=${ENV_MINIO_ROOT_USER}
-      - MINIO_ROOT_PASSWORD=${ENV_MINIO_ROOT_PASSWORD}
+      MINIO_ROOT_USER: ${ENV_MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${ENV_MINIO_ROOT_PASSWORD}
     networks:
       - traefik_lan
     volumes:

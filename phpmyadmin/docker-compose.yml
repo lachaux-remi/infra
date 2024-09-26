@@ -12,9 +12,9 @@ services:
       - traefik.http.routers.phpmyadmin.tls=${ENV_TLS}
       - traefik.http.routers.phpmyadmin.tls.certresolver=letsencrypt
     environment:
-      - PMA_HOST=mariadb
-      - PMA_USER=${ENV_PMA_USER}
-      - PMA_PASSWORD=${ENV_PMA_PASSWORD}
+      PMA_HOST: mariadb
+      PMA_USER: ${ENV_PMA_USER}
+      PMA_PASSWORD: ${ENV_PMA_PASSWORD}
     networks:
       - traefik_lan
     volumes:
