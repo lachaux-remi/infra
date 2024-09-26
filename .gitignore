@@ -8,3 +8,4 @@
 /wireguard/data/*
 /vaultwarden/data/*
 /minio/data/*
+/diun/data/*
