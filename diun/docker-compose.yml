@@ -5,6 +5,7 @@ services:
     restart: always
     environment:
       DIUN_PROVIDERS_DOCKER: true
+      DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT: true
       DIUN_WATCH_SCHEDULE: 0 */6 * * *
       DIUN_NOTIF_MAIL_HOST: ${ENV_DIUN_NOTIF_MAIL_HOST}
       DIUN_NOTIF_MAIL_PORT: ${ENV_DIUN_NOTIF_MAIL_PORT}
