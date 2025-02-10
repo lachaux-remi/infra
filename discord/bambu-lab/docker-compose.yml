@@ -1,10 +1,10 @@
 services:
   bambu-lab-discord:
     image: lachaux/bambu-lab-discord:latest
-    container_name: bambu-lab:discord
+    container_name: discord
     environment:
       DEBUG: true
-      NOTIFICATION_PERCENT: ${ENV_NOTIFICATION_PERCENT}
+      NOTIFICATION_PERCENT: 10
       PRINTER_ADDRESS: ${ENV_PRINTER_ADDRESS}
       PRINTER_ACCESS_CODE: ${ENV_PRINTER_ACCESS_CODE}
       PRINTER_SERIAL_NUMBER: ${ENV_PRINTER_SERIAL_NUMBER}
@@ -18,7 +18,7 @@ services:
 
   bambu-lab-go2rtc:
     image: alexxit/go2rtc:latest
-    container_name: bambu-lab:go2rtc
+    container_name: go2rtc
     volumes:
       - ./config:/config
     environment:
