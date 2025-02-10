@@ -1,0 +1,9 @@
+services:
+  adguard:
+    image: adguard/adguardhome:latest
+    container_name: adguard
+    restart: always
+    volumes:
+      - ./workdir:/opt/adguardhome/work
+      - ./config:/opt/adguardhome/conf
+    network_mode: container:wireguard-client
