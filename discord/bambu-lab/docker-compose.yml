@@ -17,7 +17,7 @@ services:
 
   bambu-lab-go2rtc:
     image: alexxit/go2rtc:latest
-    container_name: bambu-lab-discord
+    container_name: bambu-lab-go2rtc
     volumes:
       - ./config:/config
     environment:
