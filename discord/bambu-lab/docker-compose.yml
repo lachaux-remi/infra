@@ -1,0 +1,26 @@
+services:
+  bambu-lab-discord:
+    image: lachaux/bambu-lab-discord:latest
+    container_name: bambu-lab-discord
+    environment:
+      NOTIFICATION_PERCENT: ${ENV_NOTIFICATION_PERCENT}
+      PRINTER_ADDRESS: ${ENV_PRINTER_ADDRESS}
+      PRINTER_ACCESS_CODE: ${ENV_PRINTER_ACCESS_CODE}
+      PRINTER_SERIAL_NUMBER: ${ENV_PRINTER_SERIAL_NUMBER}
+      RTC_URL: http://localhost:1984/api/frame.jpeg?src=p1s
+      AWS_ENDPOINT: ${ENV_AWS_ENDPOINT}
+      AWS_ACCESS_KEY_ID: ${ENV_AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${ENV_AWS_SECRET_ACCESS_KEY}
+      DISCORD_WEBHOOK_NOTIFICATION_ID: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_ID}
+      DISCORD_WEBHOOK_NOTIFICATION_TOKEN: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_TOKEN}
+    network_mode: container:wireguard-client
+
+  bambu-lab-go2rtc:
+    image: alexxit/go2rtc:latest
+    container_name: bambu-lab-go2rtc
+    volumes:
+      - ./config:/config
+    environment:
+      PRINTER_ADDRESS: ${ENV_PRINTER_ADDRESS}
+      PRINTER_ACCESS_CODE: ${ENV_PRINTER_ACCESS_CODE}
+    network_mode: container:wireguard-client
