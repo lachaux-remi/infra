@@ -24,7 +24,7 @@ services:
     networks:
       - traefik_lan
     volumes:
-      - "./data:/data"
+      - ./data:/data
 
 networks:
   traefik_lan:
