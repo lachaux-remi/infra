@@ -10,3 +10,4 @@
 /minio/data/*
 /diun/data/*
 /uptime-kuma/data/*
+/wireguard/config/*

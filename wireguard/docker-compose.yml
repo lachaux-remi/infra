@@ -1,0 +1,14 @@
+services:
+  wireguard_client:
+    image: linuxserver/wireguard:latest
+    container_name: wireguard_client
+    restart: always
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      net.ipv4.conf.all.src_valid_mark: 1
+    environment:
+      - LOG_CONFS=true
+    volumes:
+      - ./config:/config:ro
