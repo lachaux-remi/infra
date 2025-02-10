@@ -1,14 +1,13 @@
 services:
   bambu-lab-discord:
     image: lachaux/bambu-lab-discord:latest
-    container_name: discord
+    container_name: bambu-lab-discord
     environment:
-      DEBUG: true
-      NOTIFICATION_PERCENT: 10
+      NOTIFICATION_PERCENT: ${ENV_NOTIFICATION_PERCENT}
       PRINTER_ADDRESS: ${ENV_PRINTER_ADDRESS}
       PRINTER_ACCESS_CODE: ${ENV_PRINTER_ACCESS_CODE}
       PRINTER_SERIAL_NUMBER: ${ENV_PRINTER_SERIAL_NUMBER}
-      RTC_URL: http://bambu-lab-go2rtc:1984/api/frame.jpeg?src=p1s
+      RTC_URL: http://localhost:1984/api/frame.jpeg?src=p1s
       AWS_ENDPOINT: ${ENV_AWS_ENDPOINT}
       AWS_ACCESS_KEY_ID: ${ENV_AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${ENV_AWS_SECRET_ACCESS_KEY}
@@ -18,7 +17,7 @@ services:
 
   bambu-lab-go2rtc:
     image: alexxit/go2rtc:latest
-    container_name: go2rtc
+    container_name: bambu-lab-discord
     volumes:
       - ./config:/config
     environment:
