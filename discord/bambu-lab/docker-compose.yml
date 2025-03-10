@@ -1,26 +1,36 @@
 services:
-  bambu-lab-discord:
+  bambu-lab-discord-01:
     image: lachaux/bambu-lab-discord:latest
-    container_name: bambu-lab-discord
+    container_name: bambu-lab-discord-01
+    restart: always
     environment:
       NOTIFICATION_PERCENT: ${ENV_NOTIFICATION_PERCENT}
-      PRINTER_ADDRESS: ${ENV_PRINTER_ADDRESS}
-      PRINTER_ACCESS_CODE: ${ENV_PRINTER_ACCESS_CODE}
-      PRINTER_SERIAL_NUMBER: ${ENV_PRINTER_SERIAL_NUMBER}
+      PRINTER_ADDRESS: ${ENV_PRINTER_ADDRESS_01}
+      PRINTER_ACCESS_CODE: ${ENV_PRINTER_ACCESS_CODE_01}
+      PRINTER_SERIAL_NUMBER: ${ENV_PRINTER_SERIAL_NUMBER_01}
       RTC_URL: http://localhost:1984/api/frame.jpeg?src=p1s
       AWS_ENDPOINT: ${ENV_AWS_ENDPOINT}
       AWS_ACCESS_KEY_ID: ${ENV_AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${ENV_AWS_SECRET_ACCESS_KEY}
-      DISCORD_WEBHOOK_NOTIFICATION_ID: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_ID}
-      DISCORD_WEBHOOK_NOTIFICATION_TOKEN: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_TOKEN}
-    network_mode: container:wireguard-client
+      S3_BUCKET: ${ENV_S3_BUCKET_01}
+      DISCORD_WEBHOOK_NOTIFICATION_ID: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_ID_01}
+      DISCORD_WEBHOOK_NOTIFICATION_TOKEN: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_TOKEN_02}
+    network_mode: container:wireguard-client-01
 
-  bambu-lab-go2rtc:
-    image: alexxit/go2rtc:latest
-    container_name: bambu-lab-go2rtc
-    volumes:
-      - ./config:/config
+  bambu-lab-discord-02:
+    image: lachaux/bambu-lab-discord:latest
+    container_name: bambu-lab-discord-02
+    restart: always
     environment:
-      PRINTER_ADDRESS: ${ENV_PRINTER_ADDRESS}
-      PRINTER_ACCESS_CODE: ${ENV_PRINTER_ACCESS_CODE}
-    network_mode: container:wireguard-client
+      NOTIFICATION_PERCENT: ${ENV_NOTIFICATION_PERCENT}
+      PRINTER_ADDRESS: ${ENV_PRINTER_ADDRESS_02}
+      PRINTER_ACCESS_CODE: ${ENV_PRINTER_ACCESS_CODE_02}
+      PRINTER_SERIAL_NUMBER: ${ENV_PRINTER_SERIAL_NUMBER_02}
+      RTC_URL: http://localhost:1984/api/frame.jpeg?src=p1s
+      AWS_ENDPOINT: ${ENV_AWS_ENDPOINT}
+      AWS_ACCESS_KEY_ID: ${ENV_AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${ENV_AWS_SECRET_ACCESS_KEY}
+      S3_BUCKET: ${ENV_S3_BUCKET_02}
+      DISCORD_WEBHOOK_NOTIFICATION_ID: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_ID_02}
+      DISCORD_WEBHOOK_NOTIFICATION_TOKEN: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_TOKEN_02}
+    network_mode: container:wireguard-client-02
