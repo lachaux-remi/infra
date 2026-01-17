@@ -1,3 +1,0 @@
-streams:
-  p1s:
-    - exec:python3 ./p1.py -a ${PRINTER_ACCESS_CODE} -i ${PRINTER_ADDRESS}

@@ -1,36 +1,11 @@
 services:
-  bambu-lab-discord-01:
+  bambu-lab-discord:
     image: lachaux/bambu-lab-discord:latest
-    container_name: bambu-lab-discord-01
+    container_name: bambu-lab-discord
     restart: always
     environment:
+      DISCORD_BOT_TOKEN: ${ENV_DISCORD_BOT_TOKEN}
+      NOTIFICATION_FOOTER_ICON: ${ENV_NOTIFICATION_FOOTER_ICON}
       NOTIFICATION_PERCENT: ${ENV_NOTIFICATION_PERCENT}
-      PRINTER_ADDRESS: ${ENV_PRINTER_ADDRESS_01}
-      PRINTER_ACCESS_CODE: ${ENV_PRINTER_ACCESS_CODE_01}
-      PRINTER_SERIAL_NUMBER: ${ENV_PRINTER_SERIAL_NUMBER_01}
-      RTC_URL: http://localhost:1984/api/frame.jpeg?src=p1s
-      AWS_ENDPOINT: ${ENV_AWS_ENDPOINT}
-      AWS_ACCESS_KEY_ID: ${ENV_AWS_ACCESS_KEY_ID}
-      AWS_SECRET_ACCESS_KEY: ${ENV_AWS_SECRET_ACCESS_KEY}
-      AWS_BUCKET: ${ENV_AWS_BUCKET_01}
-      DISCORD_WEBHOOK_NOTIFICATION_ID: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_ID_01}
-      DISCORD_WEBHOOK_NOTIFICATION_TOKEN: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_TOKEN_02}
-    network_mode: container:wireguard-client-01
-
-  bambu-lab-discord-02:
-    image: lachaux/bambu-lab-discord:latest
-    container_name: bambu-lab-discord-02
-    restart: always
-    environment:
-      NOTIFICATION_PERCENT: ${ENV_NOTIFICATION_PERCENT}
-      PRINTER_ADDRESS: ${ENV_PRINTER_ADDRESS_02}
-      PRINTER_ACCESS_CODE: ${ENV_PRINTER_ACCESS_CODE_02}
-      PRINTER_SERIAL_NUMBER: ${ENV_PRINTER_SERIAL_NUMBER_02}
-      RTC_URL: http://localhost:1984/api/frame.jpeg?src=p1s
-      AWS_ENDPOINT: ${ENV_AWS_ENDPOINT}
-      AWS_ACCESS_KEY_ID: ${ENV_AWS_ACCESS_KEY_ID}
-      AWS_SECRET_ACCESS_KEY: ${ENV_AWS_SECRET_ACCESS_KEY}
-      AWS_BUCKET: ${ENV_AWS_BUCKET_02}
-      DISCORD_WEBHOOK_NOTIFICATION_ID: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_ID_02}
-      DISCORD_WEBHOOK_NOTIFICATION_TOKEN: ${ENV_DISCORD_WEBHOOK_NOTIFICATION_TOKEN_02}
-    network_mode: container:wireguard-client-02
+    volumes:
+      - ./config:/usr/src/app/config
