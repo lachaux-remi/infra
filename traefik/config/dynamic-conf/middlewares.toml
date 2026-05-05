@@ -1,0 +1,5 @@
+[http.middlewares]
+  [http.middlewares.redirect-to-www.redirectRegex]
+    regex = "^https://(?:www\\.)?(.+)"
+    replacement = "https://www.${1}"
+    permanent = true

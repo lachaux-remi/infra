@@ -1,6 +1,7 @@
 .env
 *.log
 
+/discord/bambu-lab/config/printers.json
 /fail2ban/config/db
 /mariadb/data/*
 /portainer/data/*
