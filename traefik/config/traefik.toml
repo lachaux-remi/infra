@@ -15,6 +15,9 @@
 
   [entryPoints.HTTP]
     address = ":80"
+    [entryPoints.HTTP.http.redirections.entryPoint]
+      to = "HTTPS"
+      scheme = "https"
 
 [certificatesResolvers.letsencrypt.acme]
   storage = "acme.json"
