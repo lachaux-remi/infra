@@ -3,6 +3,7 @@
 
 /discord/bambu-lab/config/printers.json
 /fail2ban/config/db
+/immich/data/*
 /mariadb/data/*
 /portainer/data/*
 /traefik/config/acme.json
