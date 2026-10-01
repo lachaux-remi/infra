@@ -2,6 +2,8 @@
 *.log
 
 /discord/bambu-lab/config/printers.json
+/discord/bambu-lab/config/active-threads.json
+/discord/bambu-lab/config/notification-outbox.json
 /fail2ban/config/db
 /immich/data/*
 /mariadb/data/*

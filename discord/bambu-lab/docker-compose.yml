@@ -4,6 +4,7 @@ services:
     container_name: bambu-lab-discord
     restart: always
     environment:
+      CONFIG_ENCRYPTION_KEY: ${ENV_CONFIG_ENCRYPTION_KEY}
       DISCORD_BOT_TOKEN: ${ENV_DISCORD_BOT_TOKEN}
       NOTIFICATION_FOOTER_ICON: ${ENV_NOTIFICATION_FOOTER_ICON}
       NOTIFICATION_PERCENT: ${ENV_NOTIFICATION_PERCENT}
