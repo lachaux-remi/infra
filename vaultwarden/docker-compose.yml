@@ -26,8 +26,8 @@ services:
     networks:
       - traefik_lan
     volumes:
-      - ./data:/data
-      - ./../logs/vaultwarden:/logs/
+      - ${APPDATA:-/opt/infra}/vaultwarden/data:/data
+      - ${APPDATA:-/opt/infra}/logs/vaultwarden:/logs/
 
 networks:
   traefik_lan:
