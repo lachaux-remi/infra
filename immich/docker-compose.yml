@@ -26,7 +26,7 @@ services:
       - immich-redis
       - immich-database
     volumes:
-      - ./data/library:/data
+      - ${APPDATA:-/opt/infra}/immich/data/library:/data
       - /etc/localtime:/etc/localtime:ro
 
   immich-machine-learning:
@@ -71,7 +71,7 @@ services:
     networks:
       - backend
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - ${APPDATA:-/opt/infra}/immich/data/postgres:/var/lib/postgresql/data
 
 volumes:
   model-cache:
