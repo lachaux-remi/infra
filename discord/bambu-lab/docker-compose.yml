@@ -8,4 +8,4 @@ services:
       NOTIFICATION_FOOTER_ICON: ${ENV_NOTIFICATION_FOOTER_ICON}
       NOTIFICATION_PERCENT: ${ENV_NOTIFICATION_PERCENT}
     volumes:
-      - ./config:/usr/src/app/config
+      - ${APPDATA:-/opt/infra}/discord/bambu-lab/config:/usr/src/app/config
