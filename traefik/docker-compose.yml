@@ -24,6 +24,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config:/etc/traefik:ro
+      - ./../web/data/traefik:/etc/traefik/dynamic-conf/web:ro
       - ./config/acme.json:/acme.json
       - ./../logs/traefik:/logs
 

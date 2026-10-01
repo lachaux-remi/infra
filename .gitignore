@@ -9,10 +9,16 @@
 /mariadb/data/*
 /portainer/data/*
 /traefik/config/acme.json
+/traefik/config/dynamic-conf/*
+!/traefik/config/dynamic-conf/middlewares.toml
+!/traefik/config/dynamic-conf/tls.toml
+!/traefik/config/dynamic-conf/web/
+/traefik/config/dynamic-conf/web/*
+!/traefik/config/dynamic-conf/web/.gitkeep
 /wireguard/data/*
 /vaultwarden/data/*
 /minio/data/*
-/garage/data/*
 /diun/data/*
 /uptime-kuma/data/*
+/web/data/*
 /wireguard/config/*
