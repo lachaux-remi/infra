@@ -3,6 +3,8 @@ services:
     image: crazymax/diun:latest
     container_name: diun
     restart: always
+    labels:
+      - managed-by=portainer
     environment:
       DIUN_PROVIDERS_DOCKER: true
       DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT: true
