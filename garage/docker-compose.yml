@@ -1,0 +1,32 @@
+services:
+  garage:
+    image: dxflrs/garage:v2.3.0
+    container_name: garage
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.garage-s3.loadbalancer.server.port=3900
+      - traefik.http.routers.garage-s3.service=garage-s3
+      - traefik.http.routers.garage-s3.rule=Host(`${ENV_S3_DOMAIN}`)
+      - traefik.http.routers.garage-s3.entrypoints=${ENV_ENTRYPOINTS}
+      - traefik.http.routers.garage-s3.tls=${ENV_TLS}
+      - traefik.http.routers.garage-s3.tls.certresolver=letsencrypt
+      - traefik.http.services.garage-web.loadbalancer.server.port=3902
+      - traefik.http.routers.garage-web.service=garage-web
+      - traefik.http.routers.garage-web.rule=Host(`${ENV_WEB_DOMAIN}`)
+      - traefik.http.routers.garage-web.entrypoints=${ENV_ENTRYPOINTS}
+      - traefik.http.routers.garage-web.tls=${ENV_TLS}
+      - traefik.http.routers.garage-web.tls.certresolver=letsencrypt
+    environment:
+      GARAGE_RPC_SECRET: ${ENV_GARAGE_RPC_SECRET}
+      GARAGE_ADMIN_TOKEN: ${ENV_GARAGE_ADMIN_TOKEN}
+    networks:
+      - traefik_lan
+    volumes:
+      - ${APPDATA:-/opt/infra}/garage/config/garage.toml:/etc/garage.toml:ro
+      - ${APPDATA:-/opt/infra}/garage/data/meta:/var/lib/garage/meta
+      - ${APPDATA:-/opt/infra}/garage/data/data:/var/lib/garage/data
+
+networks:
+  traefik_lan:
+    external: true
