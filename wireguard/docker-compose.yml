@@ -1,28 +1,28 @@
 services:
-     - ./config/02:/config:rowireguard-client-01:
-     - ./config/02:/config:ro  image: linuxserver/wireguard:latest
-     - ./config/02:/config:ro  container_name: wireguard-client-01
-     - ./config/02:/config:ro  restart: always
-     - ./config/02:/config:ro  cap_add:
-     - ./config/02:/config:ro    - NET_ADMIN
-     - ./config/02:/config:ro    - SYS_MODULE
-     - ./config/02:/config:ro  sysctls:
-     - ./config/02:/config:ro    net.ipv4.conf.all.src_valid_mark: 1
-     - ./config/02:/config:ro  environment:
-     - ./config/02:/config:ro    - LOG_CONFS=true
-     - ./config/02:/config:ro  volumes:
-     - ./config/02:/config:ro    - ${APPDATA:-/opt/infra}/wireguard/config/01:/config:ro
+  wireguard-client-01:
+    image: linuxserver/wireguard:latest
+    container_name: wireguard-client-01
+    restart: always
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      net.ipv4.conf.all.src_valid_mark: 1
+    environment:
+      - LOG_CONFS=true
+    volumes:
+      - ${APPDATA:-/opt/infra}/wireguard/config/01:/config:ro
 
-     - ./config/02:/config:ro# wireguard-client-02:
-     - ./config/02:/config:ro#   image: linuxserver/wireguard:latest
-     - ./config/02:/config:ro#   container_name: wireguard-client-02
-     - ./config/02:/config:ro#   restart: always
-     - ./config/02:/config:ro#   cap_add:
-     - ./config/02:/config:ro#     - NET_ADMIN
-     - ./config/02:/config:ro#     - SYS_MODULE
-     - ./config/02:/config:ro#   sysctls:
-     - ./config/02:/config:ro#     net.ipv4.conf.all.src_valid_mark: 1
-     - ./config/02:/config:ro#   environment:
-     - ./config/02:/config:ro#     - LOG_CONFS=true
-     - ./config/02:/config:ro#   volumes:
-     - ./config/02:/config:ro#     - ./config/02:/config:ro
+  # wireguard-client-02:
+  #   image: linuxserver/wireguard:latest
+  #   container_name: wireguard-client-02
+  #   restart: always
+  #   cap_add:
+  #     - NET_ADMIN
+  #     - SYS_MODULE
+  #   sysctls:
+  #     net.ipv4.conf.all.src_valid_mark: 1
+  #   environment:
+  #     - LOG_CONFS=true
+  #   volumes:
+  #     - ${APPDATA:-/opt/infra}/wireguard/config/02:/config:ro
