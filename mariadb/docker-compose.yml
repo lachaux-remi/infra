@@ -10,7 +10,7 @@ services:
     ports:
       - 3306:3306/tcp
     volumes:
-      - ./data:/var/lib/mysql
+      - ${APPDATA:-/opt/infra}/mariadb/data:/var/lib/mysql
 
 networks:
   traefik_lan:
