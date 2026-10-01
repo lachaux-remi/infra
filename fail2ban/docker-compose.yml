@@ -12,6 +12,6 @@ services:
       F2B_LOG_TARGET: /logs/fail2ban/fail2ban.log
     network_mode: host
     volumes:
-      - ./config:/data
-      - ./../logs/fail2ban:/logs/fail2ban
-      - ./../logs:/logs:ro
+      - ${APPDATA:-/opt/infra}/fail2ban/config:/data
+      - ${APPDATA:-/opt/infra}/logs/fail2ban:/logs/fail2ban
+      - ${APPDATA:-/opt/infra}/logs:/logs:ro
