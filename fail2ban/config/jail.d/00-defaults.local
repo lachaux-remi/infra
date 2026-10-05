@@ -1,0 +1,3 @@
+[DEFAULT]
+bantime.increment = true
+bantime.maxtime = 4w
