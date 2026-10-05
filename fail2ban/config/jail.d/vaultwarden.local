@@ -5,6 +5,8 @@ port = http,https
 filter = vaultwarden
 mode = aggressive
 logpath = /logs/vaultwarden/vaultwarden.log
+maxretry = 5
+bantime = 6h
 
 [vaultwarden-admin]
 enabled = true
@@ -13,3 +15,5 @@ port = http,https
 filter = vaultwarden-admin
 mode = aggressive
 logpath = /logs/vaultwarden/vaultwarden.log
+maxretry = 3
+bantime = 1d
