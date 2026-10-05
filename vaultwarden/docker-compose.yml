@@ -9,6 +9,15 @@ services:
       - traefik.http.routers.vaultwarden.entrypoints=${ENV_ENTRYPOINTS}
       - traefik.http.routers.vaultwarden.tls=${ENV_TLS}
       - traefik.http.routers.vaultwarden.tls.certresolver=letsencrypt
+      - traefik.http.routers.vaultwarden.service=vaultwarden
+      - traefik.http.routers.vaultwarden-admin.rule=Host(`${ENV_DOMAIN}`) && PathPrefix(`/admin`)
+      - traefik.http.routers.vaultwarden-admin.entrypoints=${ENV_ENTRYPOINTS}
+      - traefik.http.routers.vaultwarden-admin.tls=${ENV_TLS}
+      - traefik.http.routers.vaultwarden-admin.tls.certresolver=letsencrypt
+      - traefik.http.routers.vaultwarden-admin.service=vaultwarden
+      - traefik.http.routers.vaultwarden-admin.middlewares=vaultwarden-admin-ip
+      - traefik.http.middlewares.vaultwarden-admin-ip.ipallowlist.sourcerange=${ENV_ADMIN_ALLOWED_IPS}
+      - traefik.http.services.vaultwarden.loadbalancer.server.port=80
     environment:
       DOMAIN: ${ENV_PROTOCOL}://${ENV_DOMAIN}
       ADMIN_TOKEN: ${ENV_ADMIN_TOKEN}
